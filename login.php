@@ -1,9 +1,10 @@
-<?php 
+<?php
 include 'koneksi.php';
-   session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,40 +12,13 @@ include 'koneksi.php';
     <link rel="stylesheet" href="style/style.css">
     <title>Login</title>
 </head>
+
 <body>
-      <div class="container">
+    <div class="container">
         <div class="box form-box">
-            <?php 
-             
-              if(isset($_POST['submit'])){
-                $username = mysqli_real_escape_string($koneksi,$_POST['username']);
-                $password = mysqli_real_escape_string($koneksi,$_POST['password']);
 
-                $result = mysqli_query($koneksi,"SELECT * FROM register WHERE username='$username' AND password='$password' ") or die("Select Error");
-                $row = mysqli_fetch_assoc($result);
-
-                if(is_array($row) && !empty($row)){
-                    $_SESSION['email'] = $row['email'];
-                    $_SESSION['username'] = $row['username'];
-                    $_SESSION['namalengkap'] = $row['namalengkap'];
-                    $_SESSION['password'] = $row['password'];
-                    header("Location: Tugas.php");
-                }else{
-                    echo "<div class='message'>
-                      <p>Wrong Username or Password</p>
-                       </div> <br>";
-                   echo "<a href='login.php'><button class='btn'>Go Back</button>";
-         
-                }
-                // if(isset($_SESSION['valid'])){
-                //     header("Location: index.php");
-                // }
-              }else{
-
-            
-            ?>
             <header>Login</header>
-            <form action="" method="post">
+            <form action="act_login.php?op=in" method="post">
                 <div class="field input">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" autocomplete="off" required>
@@ -56,7 +30,7 @@ include 'koneksi.php';
                 </div>
 
                 <div class="field">
-                    
+
                     <input type="submit" class="btn" name="submit" value="Login" required>
                 </div>
                 <div class="links">
@@ -64,7 +38,8 @@ include 'koneksi.php';
                 </div>
             </form>
         </div>
-        <?php } ?>
-      </div>
+
+    </div>
 </body>
+
 </html>

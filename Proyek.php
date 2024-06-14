@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body class="sb-nav-fixed">
   <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3 text-dark" href="Dashboard.html">Dashbord</a>
+    <a class="navbar-brand ps-3 text-dark" href="landing.html">Be:Construct</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
       <i class="fas fa-bars"></i>
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <li>
             <hr class="dropdown-divider" />
           </li>
-          <li><a class="dropdown-item" href="login.php">Logout</a></li>
+          <li><a class="dropdown-item" href="landing.html">Logout</a></li>
         </ul>
       </li>
     </ul>
@@ -73,13 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
           <div class="nav">
-            <div class="sb-sidenav-menu-heading">Core</div>
-            <a class="nav-link" href="Dashboard.html">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-tachometer-alt"></i>
-              </div>
-              Dashboard
-            </a>
             <div class="sb-sidenav-menu-heading">Menu Utama</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
               <div class="sb-nav-link-icon">
@@ -130,17 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </a>
               </nav>
             </div>
-            <div class="sb-sidenav-menu-heading">Addons</div>
-            <a class="nav-link" href="charts.html">
-              <div class="sb-nav-link-icon">
-                <i class="fas fa-chart-area"></i>
-              </div>
-              ----
-            </a>
-            <a class="nav-link" href="tables.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-              ----
-            </a>
           </div>
         </div>
         <div class="sb-sidenav-footer">
@@ -168,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form id="form-multidelete" action="Proyek.php" method="post">
                   <!-- Tambah Proyek Baru Button -->
                   <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#createProjectModal">Tambah Proyek Baru</button>
-                  <button type="submit" id="btn-delete" class="btn btn-danger mb-2" style="display:none;">Delete Selected</button>
+                  <button type="submit" id="btn-delete" class="btn btn-danger mb-2" style="display: none;">Delete Selected</button>
                   <table id="datatablesSimple">
                     <thead>
                       <tr>
@@ -243,6 +225,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                               <button type="button" class="btn btn-primary editProjectBtn" data-id="<?= $id_proyek ?>" data-nama="<?= $namaProyek ?>" data-idklien="<?= $idKlien ?>" data-namaklien="<?= $namaKlien ?>" data-idarsitek="<?= $idArsitek ?>" data-namaarsitek="<?= $namaArsitek ?>" data-idkontraktor="<?= $idKontraktor ?>" data-namakontraktor="<?= $namaKontraktor ?>" data-idbiaya="<?= $idBiaya ?>" data-jmlbiaya="<?= $jmlBiaya ?>" data-gambarproyek="<?= $gambarProyek ?>">Edit</button>
                               <a href="./uploads/<?= $gambarProyek ?>" download class="btn btn-primary">Download</a>
                             </div>
+                            <!-- <a href="deleteProyek.php?id=<?= $row['id_proyek'] ?>" class="btn btn-danger btn-sm">Delete</a> -->
                           </td>
 
                         </tr>
@@ -455,6 +438,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 const jmlBiaya = e.target.dataset.jmlbiaya;
                 const gambarProyek = e.target.dataset.gambarproyek;
 
+                // console.log(id, nama, idKlien, namaKlien, idArsitek, namaArsitek, idKontraktor, namaKontraktor, idBiaya, jmlBiaya, gambarProyek);
+
 
                 document.getElementById('edit_id_proyek').value = id;
                 document.getElementById('edit_nama_proyek').value = nama;
@@ -504,10 +489,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <script src="assets/demo/chart-area-demo.js"></script>
   <script src="assets/demo/chart-bar-demo.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-
-
-
-
   <script src="js/datatables-simple-demo.js"></script>
 </body>
 

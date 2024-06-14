@@ -8,21 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $id_proyek = $_POST['id_proyek'];
   $id_progress = $_POST['id_progress'];
 
-  $query = "
-    UPDATE tugas 
-    SET 
-      nama_tugas = '$nama_tugas', 
-      id_material = '$id_material', 
-      id_proyek = '$id_proyek', 
-      id_progress = '$id_progress' 
-    WHERE id_tugas = $id_tugas
-  ";
-  $result = mysqli_query($koneksi, $query);
+  // Querynya belum ada id_proyek
+  $query = "UPDATE tugas SET nama_tugas='$nama_tugas', id_material='$id_material', id_proyek='$id_proyek', id_progress='$id_progress' WHERE id_tugas='$id_tugas'";
 
-  if ($result) {
-    header('Location: Tugas.php');
+  if (mysqli_query($koneksi, $query)) {
+    echo "<script>alert('Tugas berhasil diperbarui!'); window.location.href='Tugas.php';</script>";
   } else {
-    echo 'Error: ' . mysqli_error($koneksi);
+    echo "<script>alert('Terjadi kesalahan: " . mysqli_error($koneksi) . "'); window.location.href='Tugas.php';</script>";
   }
 }
-?>

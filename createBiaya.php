@@ -2,9 +2,9 @@
 include 'koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $jml_klien = $_POST['jml_klien'];
+  $jml_biaya = $_POST['jml_biaya'];
 
-  $query = "INSERT INTO tugas (jml_klien) VALUES ('$jml_klien')";
+  $query = "INSERT INTO biaya (jml_biaya) VALUES ('$jml_biaya')";
   $result = mysqli_query($koneksi, $query);
 
   if ($result) {
@@ -13,4 +13,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo 'Error: ' . mysqli_error($koneksi);
   }
 }
-?>

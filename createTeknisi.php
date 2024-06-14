@@ -5,13 +5,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $nama_teknisi = $_POST['nama_teknisi'];
   $id_kontraktor = $_POST['id_kontraktor'];
 
-  $query = "INSERT INTO teknisi (nama_teknisi, id_kontraktor) VALUES ('$nama_teknisi', '$id_kontraktor')";
-  $result = mysqli_query($koneksi, $query);
+  $query = "INSERT INTO teknisi (nama_teknisi, id_kontraktor) VALUES ('$nama_teknisi','$id_kontraktor')";
 
-  if ($result) {
-    header('Location: Teknisi.php');
+  if (mysqli_query($koneksi, $query)) {
+    echo "<script>alert('Teknisi berhasil ditambahkan!'); window.location.href='Teknisi.php';</script>";
   } else {
-    echo 'Error: ' . mysqli_error($koneksi);
+    echo "<script>alert('Terjadi kesalahan: " . mysqli_error($koneksi) . "'); window.location.href='Teknisi.php';</script>";
   }
 }
-?>

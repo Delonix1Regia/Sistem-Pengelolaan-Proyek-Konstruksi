@@ -6,9 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $nama_klien = $_POST['nama_klien'];
 
   $query = "
-    UPDATE tugas 
+    UPDATE klien 
     SET 
-      nama_klien = '$nama_klien', 
+      nama_klien = '$nama_klien'
     
     WHERE id_klien = $id_klien
   ";
@@ -20,4 +20,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo 'Error: ' . mysqli_error($koneksi);
   }
 }
-?>
